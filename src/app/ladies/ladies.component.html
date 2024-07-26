@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 mt-5">
+            <h3 class="text-center"><b>Categories</b></h3>
+            <div class="p-5">
+
+                <h5 class="text-center">Ladies Sandals</h5>
+                <hr>
+                <h5 class="text-center">Ladies Slipper and Flip Flops</h5>
+                <hr>
+                <h5 class="text-center">Ladies Casual Shoes</h5>
+                <hr>
+                <h5 class="text-center">Ladies Special Collections</h5>
+                <hr>
+            </div>
+        </div>
+        <div class="col-8 mt-5 mb-5">
+            <div class="row align-items-center justify-content-center text-center">
+                <div *ngFor="let product of ladiesproduct" class="col-lg-3 p-3">
+                    <div class="card">
+                        <img routerLink="/ladies/view/{{product.id}}" [src]="product.image" style="height: 100px;"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title fs-6">{{product.title}}</h5>
+                            <p class="card-text">Rs.{{product.price}}</p>
+                            <div class="align-items-center justify-content-center d-flex">
+                                <!-- <a href="" class="btn border border-dark p-1"><small>BUY NOW</small></a> -->
+                                <button class="btn border btn-dark border-dark" (click)="addtocart(product)">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

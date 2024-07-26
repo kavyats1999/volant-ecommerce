@@ -1,0 +1,167 @@
+.container-fluid {
+    margin-top: 50px
+}
+
+.footer-copyright {
+    margin-top: 13px
+}
+
+a {
+    text-decoration: none !important;
+    color: #777a7c
+}
+
+.description {
+    font-size: 12px
+}
+
+.fa-facebook-f {
+    color: #3b5999
+}
+
+.fa-instagram {
+    color: #e4405f
+}
+
+.fa-youtube {
+    color: #cd201f
+}
+
+.fa-twitter {
+    color: #55acee
+}
+
+.logo-footer{
+    height:30px;
+}
+
+.footer-copyright p {
+    margin-top: 10px
+}
+
+
+.slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -50px;
+}
+
+.slick-prev.slick-disabled,
+.slick-next.slick-disabled {
+    display: none !important;
+}
+
+.full-width-section .full-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.full-width-section .container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+.full-width-section .row.g-0 {
+    margin: 0;
+}
+
+.full-width-section .col-lg-6 {
+    padding: 0;
+    margin: 0;
+}
+.position-relative {
+    position: relative;
+}
+
+.full-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-container {
+    overflow: hidden; /* Ensures that the text doesn't overflow outside the card */
+    position: relative;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Adjust text color as needed */
+    text-align: center;
+    z-index: 1;
+    opacity: 1; /* Text is visible by default */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.card-container:hover .text-overlay {
+    opacity: 0; /* Text disappears on hover */
+}
+
+.bi-star{
+    font-size: 10px;
+}
+.bi-star-fill{
+    font-size: 10px;
+}
+
+
+.product-card .image-container {
+    position: relative;
+}
+
+.product-card .image-container img {
+    /* width: 100%; */
+    height: 250px;
+    /* object-fit: cover; */
+    transition: transform 0.5s ease;
+}
+
+.product-card .icon-container {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    opacity: 0;
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+.product-card .icon-container i {
+    font-size: 24px;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .image-container img {
+    transform: scale(1.05);
+}
+
+.product-card:hover .icon-container {
+    bottom: 10px;
+    opacity: 1;
+}
+
+.product-card .icon-container i:hover {
+    transform: scale(1.2);
+}
+

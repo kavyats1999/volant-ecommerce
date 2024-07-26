@@ -1,0 +1,82 @@
+<app-header></app-header>
+
+<div style="margin-top: 80px;">
+
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" [src]="product.image" alt="..." /></div>
+        <div class="col-md-6">
+          <div class="small mb-1">SKU: {{product.id}}</div>
+          <h1 class="display-5 fw-bolder">{{product.title}}</h1>
+          <div class="card mb-4 border-0">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+                aria-expanded="true" data-bs-target="#colorsCollapseExample" role="button">
+                <div>Select Colors</div>
+                <div class="bi bi-chevron-down"></div>
+              </div>
+              <div class="collapse show mt-4" id="colorsCollapseExample">
+                <div class="color-filter-group d-flex gap-3">
+                  <input class="form-check-input" name="color" type="radio" [ngStyle]="{'background-color': '#1fa0c6'}"
+                    value="" aria-label="...">
+                  <input class="form-check-input" name="color" type="radio" [ngStyle]="{'background-color': 'green'}"
+                    value="" aria-label="...">
+                  <input class="form-check-input" name="color" type="radio" [ngStyle]="{'background-color': '#c61faa'}"
+                    value="" aria-label="...">
+                  <input class="form-check-input" name="color" type="radio" [ngStyle]="{'background-color': '#1fc662'}"
+                    value="" aria-label="...">
+                  <input class="form-check-input" name="color" type="radio" [ngStyle]="{'background-color': '#9dc61f'}"
+                    value="" aria-label="...">
+                  <input class="form-check-input" name="color" type="radio" [ngStyle]="{'background-color': '#c67b1f'}"
+                    value="" aria-label="...">
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+                aria-expanded="true" data-bs-target="#colorsCollapseExample" role="button">
+                <div>Select Size</div>
+                <div class="bi bi-chevron-down"></div>
+              </div>
+              <div class="collapse show mt-4" id="colorsCollapseExample">
+                <div class="color-filter-group d-flex gap-3">
+                  <div class="btn-group">
+                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" />
+                    <label class="btn rounded-circle m-1" for="option1" data-mdb-ripple-init>5</label>
+
+                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" />
+                    <label class="btn  rounded-circle m-1" for="option2" data-mdb-ripple-init>6</label>
+
+                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" />
+                    <label class="btn rounded-circle m-1" for="option3" data-mdb-ripple-init>7</label>
+                    <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off" />
+                    <label class="btn rounded-circle m-1" for="option5" data-mdb-ripple-init>8</label>
+
+                    <input type="radio" class="btn-check" name="options" id="option6" autocomplete="off" />
+                    <label class="btn rounded-circle m-1" for="option6" data-mdb-ripple-init>9</label>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fs-5 mb-5">
+            <span class="text-decoration-line-through"></span>
+            <span>RS.{{product.price}}</span>
+          </div>
+          <p class="lead">{{product.description}}</p>
+          <div class="d-flex">
+            <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" /> -->
+            <div class="align-items-center justify-content-between d-flex">
+              <button class="btn border border-dark bg-dark text-white" (click)="addtocart(product)">ADD TO
+                CART</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

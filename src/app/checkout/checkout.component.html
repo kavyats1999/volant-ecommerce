@@ -1,0 +1,283 @@
+<!-- <div class="container mt-5">
+    <h2>Checkout</h2>
+    <p><strong>Grand Total: Rs. {{ grandTotal }}</strong></p>
+
+    <div class="payment-options">
+        <div class="form-group">
+            <label for="payment-method">Choose your payment method:</label>
+            <select class="form-control" id="payment-method">
+                <option value="gpay">Google Pay</option>
+                <option value="credit">Credit Card</option>
+                <option value="debit">Debit Card</option>
+            </select>
+        </div>
+        <button class="btn btn-success">Proceed to Payment</button>
+    </div>
+</div> -->
+
+<h1 class="text-center text-success mb-5">Awesome, that's Rs. {{ grandTotal }}</h1>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Address Form -->
+        <div class="col-lg-6">
+            <div class="card shadow border">
+                <div class="card-body p-4">
+                    <form role="form" class="needs-validation" novalidate (ngSubmit)="submitAddress()"
+                        #addressForm="ngForm">
+                        <!-- Full Name and Building Name/House No. -->
+                        <div class="row">
+                            <h1 class="h3 mb-5">Address Form</h1>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullName" name="fullName"
+                                        placeholder="Enter your full name" [(ngModel)]="address.name" required
+                                        #fullName="ngModel">
+                                    <div class="invalid-feedback" *ngIf="fullName.invalid && fullName.touched">
+                                        Please enter your full name.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="buildingName" class="form-label">Building Name/House No.</label>
+                                    <input type="text" class="form-control" id="buildingName" name="buildingName"
+                                        placeholder="Enter building name or house number"
+                                        [(ngModel)]="address.buildingname" required #buildingName="ngModel">
+                                    <div class="invalid-feedback" *ngIf="buildingName.invalid && buildingName.touched">
+                                        Please enter building name or house number.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- City and Landmark -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" name="city"
+                                        placeholder="Enter city" [(ngModel)]="address.cityname" required
+                                        #city="ngModel">
+                                    <div class="invalid-feedback" *ngIf="city.invalid && city.touched">
+                                        Please enter the city.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="landmark" class="form-label">Landmark</label>
+                                    <input type="text" class="form-control" id="landmark" name="landmark"
+                                        placeholder="Enter landmark (optional)" [(ngModel)]="address.landmark">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- State and Postal Code -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="state" class="form-label">State</label>
+                                    <input type="text" class="form-control" id="state" name="state"
+                                        placeholder="Enter state" [(ngModel)]="address.state" required #state="ngModel">
+                                    <div class="invalid-feedback" *ngIf="state.invalid && state.touched">
+                                        Please enter the state.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="postalCode" class="form-label">Postal Code</label>
+                                    <input type="text" class="form-control" id="postalCode" name="postalCode"
+                                        placeholder="Enter postal code" [(ngModel)]="address.postalcode" required
+                                        #postalCode="ngModel">
+                                    <div class="invalid-feedback" *ngIf="postalCode.invalid && postalCode.touched">
+                                        Please enter the postal code.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group mb-4">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                                placeholder="Enter phone number" [(ngModel)]="address.phone" required
+                                #phoneNumber="ngModel">
+                            <div class="invalid-feedback" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                                Please enter your phone number.
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit"
+                            [disabled]="addressForm.invalid">Submit</button>
+                    </form>
+                </div> <!-- card-body.// -->
+            </div> <!-- card.// -->
+        </div>
+
+        <!-- Payment Section -->
+        <div class="col-lg-6">
+            <h1 class="h3 mb-5">Payment</h1>
+            <div class="row">
+                <!-- Payment Options -->
+                <div class="col-lg-9">
+                    <div class="accordion card border shadow p-3" id="accordionPayment">
+                        <!-- Credit Card -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="h5 px-4 py-2  accordion-header d-flex justify-content-between align-items-center">
+                                <div class="form-check w-100 collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseCC" aria-expanded="false">
+                                    <input class="form-check-input" type="radio" name="payment" id="payment1" (change)="validatePaymentMethod()">
+                                    <label class="form-check-label pt-1" for="payment1">
+                                        Credit Card
+                                    </label>
+                                </div>
+                                <span>
+                                    <img src="https://w7.pngwing.com/pngs/962/794/png-transparent-mastercard-credit-card-mastercard-logo-mastercard-logo-love-text-heart.png"
+                                        alt="UPI Icon" width="34" height="25">
+                                </span>
+                            </h2>
+                            <div id="collapseCC" class="accordion-collapse collapse" aria-labelledby="headingCC"
+                                data-bs-parent="#accordionPayment">
+                                <div class="accordion-body px-4 pt-0 pb-4">
+                                    <!-- Credit Card Form -->
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="cardNumber" class="form-label">Card Number</label>
+                                            <input type="text" class="form-control" id="cardNumber" placeholder="Enter your card number" (input)="validatePaymentMethod()">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group">
+                                                    <label for="expiryDate" class="form-label">Expiry Date</label>
+                                                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" (input)="validatePaymentMethod()">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <div class="form-group">
+                                                    <label for="cvv" class="form-label">CVV</label>
+                                                    <input type="text" class="form-control" id="cvv" placeholder="CVV" (input)="validatePaymentMethod()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- UPI -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="h5 px-4 accordion-header d-flex justify-content-between align-items-center">
+                                <div class="form-check w-100 collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseUPI" aria-expanded="false">
+                                    <input class="form-check-input" type="radio" name="payment" id="payment2" (change)="validatePaymentMethod()">
+                                    <label class="form-check-label pt-1" for="payment2">
+                                        UPI
+                                    </label>
+                                </div>
+                                <span>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo-vector.svg/1280px-UPI-Logo-vector.svg.png" alt="UPI Icon" width="34" height="25">
+                                </span>
+                            </h2>
+                            <div id="collapseUPI" class="accordion-collapse collapse" aria-labelledby="headingUPI"
+                                data-bs-parent="#accordionPayment">
+                                <div class="accordion-body px-4 pt-0 pb-4">
+                                    <!-- UPI Form -->
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="upiID" class="form-label">UPI ID</label>
+                                            <input type="text" class="form-control" id="upiID" placeholder="Enter your UPI ID" (input)="validatePaymentMethod()">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- PayPal -->
+                        <div class="accordion-item mb-3">
+                            <h2 class="h5 px-4 accordion-header d-flex justify-content-between align-items-center">
+                                <div class="form-check w-100 collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#collapsePayPal" aria-expanded="false">
+                                    <input class="form-check-input" type="radio" name="payment" id="payment3" (change)="validatePaymentMethod()">
+                                    <label class="form-check-label pt-1" for="payment3">
+                                        PayPal
+                                    </label>
+                                </div>
+                                <span>
+                                    <img src="https://freelogopng.com/images/all_img/1655977977paypal-logo-transparent.png" alt="PayPal Icon" width="34" height="25">
+                                </span>
+                            </h2>
+                            <div id="collapsePayPal" class="accordion-collapse collapse" aria-labelledby="headingPayPal"
+                                data-bs-parent="#accordionPayment">
+                                <div class="accordion-body px-4 pt-0 pb-4">
+                                    <!-- PayPal Form -->
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="paypalEmail" class="form-label">PayPal Email</label>
+                                            <input type="email" class="form-control" id="paypalEmail" placeholder="Enter your PayPal email" (input)="validatePaymentMethod()">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow-sm border-0 mt-4">
+                            <div class="card-body p-4">
+                                <h2 class="h4 mb-4">Order Summary</h2>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Total Payment:</span>
+                                    <span class="font-weight-bold">Rs. {{ grandTotal }}</span>
+                                    <!-- Replace with dynamic total amount -->
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="termsConditions" required>
+                                    <label class="form-check-label" for="termsConditions">
+                                        I agree to the <a href="#termsConditionsModal" data-bs-toggle="modal">terms and
+                                            conditions</a>.
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions.
+                                    </div>
+                                    <div class="text-center">
+                                        <button (click)="placeOrder()" [disabled]="!isPaymentValid" class="btn btn-success mt-2">Purchase</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- card.// -->
+                    </div> <!-- accordion.// -->
+                </div> <!-- col.// -->
+                
+            </div> <!-- row.// -->
+
+            <!-- Summary -->
+
+        </div> <!-- col.// -->
+    </div> <!-- row.// -->
+
+    <!-- Terms and Conditions Modal -->
+    <div class="modal fade" id="termsConditionsModal" tabindex="-1" aria-labelledby="termsConditionsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsConditionsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add your terms and conditions content here -->
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta inventore doloribus animi vero?
+                        Soluta earum hic alias, exercitationem nisi id doloribus beatae non suscipit, deserunt eum ipsum
+                        facere in fugiat.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

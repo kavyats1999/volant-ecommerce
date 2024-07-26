@@ -1,0 +1,291 @@
+<app-header></app-header>
+<a style="text-decoration: none;" href="https://wa.me/+918590366431" class="whatsapp-icon" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<section class="full-width-section">
+    <div class="container-fluid m-0 p-0">
+        <div class="row g-0 mt-5">
+            <div class="col-lg-6 p-3">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="1000">
+                            <img src="../../assets/images/compressed-images/jpeg-optimizer_baner(790x680)-02.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="../../assets/images/compressed-images/jpeg-optimizer_baner(790x680)-03.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="../../assets/images/compressed-images/jpeg-optimizer_baner(790x680)-04.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="row g-0">
+                    <div class="col-lg-6 p-3 position-relative card-container">
+                        <img routerLink="/ladies" src="../../assets/images/compressed-images/jpeg-optimizer_sidebaner-gents-(385x330)-02.jpg"
+                            alt="" class="img-fluid full-cover">
+                        <div class="text-overlay">
+                            <h3 class="fw-bold">Ladies</h3>
+                            <p class="text-white fw-bold"><em>Elegant Choices</em></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-3 position-relative card-container">
+                        <img routerLink="/gents" src="../../assets/images/compressed-images/jpeg-optimizer_sidebaner-ladies-(385x330)-01.jpg"
+                            alt="" class="img-fluid full-cover">
+                        <div class="text-overlay">
+                            <h3 class="fw-bold">Gents</h3>
+                            <p class="text-white fw-bold"><em>Classic Styles</em></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-3 position-relative card-container">
+                        <img routerLink="/boys-girls" src="../../assets/images/compressed-images/jpeg-optimizer_sidebaner-bg-(385x330)-03.jpg"
+                            alt="" class="img-fluid full-cover">
+                        <div class="text-overlay">
+                            <h3 class="fw-bold">Boys&girls</h3>
+                            <p class="text-white fw-bold"><em>Perfect for Any Occasion</em></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-3 position-relative card-container">
+                        <img routerLink="/boys-girls" src="../../assets/images/compressed-images/jpeg-optimizer_sidebaner-kids-(385x330)-04.jpg"
+                            alt="" class="img-fluid full-cover">
+                        <div class="text-overlay">
+                            <h3 class="fw-bold">Kids</h3>
+                            <p class="text-white fw-bold"><em>Comfort and Fun</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="py-5">
+    <h1 class="text-center fw-bold">GENTS LATEST</h1>
+    <p class="text-center text-black-50">Walk in confidence with the Volant Footwear newest collection</p>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row justify-content-center">
+           
+            <div class="product-carousel">
+                <div *ngFor="let product of allProducts" class="col-lg-3 mb-5">
+                    <div class="card m-2 product-card" style="height: 380px;">
+                        <!-- Product image-->
+                        <div class="image-container">
+                            <img class="card-img-top" routerLink="/product/view/{{product.id}}"
+                                [src]="product.image" alt="..." />
+                            <div class="icon-container">
+                                <i routerLink="/product/view/{{product.id}}" class="fa fa-heart"></i>
+                                <i routerLink="/product/view/{{product.id}}" class="fa-solid fa-eye"></i>
+                                <i routerLink="/product/view/{{product.id}}" class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{product.title}}</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                                        <div *ngIf="star <= product.rating.rate; else emptyStar"
+                                            class="bi bi-star-fill text-dark">
+                                        </div>
+                                        <ng-template #emptyStar>
+                                            <div class="bi bi-star text-dark"></div>
+                                        </ng-template>
+                                    </ng-container>
+                                </div>
+                                <!-- <div class="text-center text-black-50">{{product.rating.count}} reviews</div> -->
+                                <!-- Product price-->
+                                <!-- <i class="fa-solid fa-indian-rupee-sign"></i> {{product.price}} -->
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <a href="" routerLink="/gents">
+                <h5 class="ms-2 btn btn-dark"><b>View All Collection <i class="fa-solid fa-arrow-right"></i></b></h5>
+            </a>
+
+            
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5">
+    <h1 class="text-center fw-bold">LADIES LATEST</h1>
+    <p class="text-center text-black-50">Walk in confidence with the Volant Footwear newest collection</p>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row justify-content-center">
+            
+
+            <div class="product-carousel">
+                <div *ngFor="let ladyproduct of allLadiesProduct" class="col-lg-3 mb-5">
+                    <div class="card m-2 product-card">
+                        <!-- Product image-->
+                        <div class="image-container">
+                            <img class="card-img-top" routerLink="/ladies/view/{{ladyproduct.id}}"
+                                [src]="ladyproduct.image" alt="..." />
+                            <div class="icon-container">
+                                <i routerLink="/ladies/view/{{ladyproduct.id}}" class="fa fa-heart"></i>
+                                <i routerLink="/ladies/view/{{ladyproduct.id}}" class="fa-solid fa-eye"></i>
+                                <i routerLink="/ladies/view/{{ladyproduct.id}}" class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{ladyproduct.title}}</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                                        <div *ngIf="star <= ladyproduct.rating.rate; else emptyStar"
+                                            class="bi bi-star-fill text-dark"></div>
+                                        <ng-template #emptyStar>
+                                            <div class="bi bi-star text-dark"></div>
+                                        </ng-template>
+                                    </ng-container>
+                                </div>
+                                <!-- <div class="text-center text-black-50">{{ladyproduct.rating.count}} reviews</div> -->
+                                <!-- Product price-->
+                                <!-- <i class="fa-solid fa-indian-rupee-sign"></i> {{ladyproduct.price}} -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="" routerLink="/ladies">
+                <h5 class="ms-2 btn btn-dark"><b>View All Collection <i class="fa-solid fa-arrow-right"></i></b></h5>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="py-5">
+    <h1 class="text-center fw-bold">BOYS & GIRLS, KIDS LATEST</h1>
+    <p class="text-center text-black-50">Walk in confidence with the Volant Footwear newest collection</p>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row justify-content-center">
+           
+
+            <div class="product-carousel">
+                <div *ngFor="let childrenproduct of allChildrensProduct" class="col-lg-3 mb-5">
+                    <div class="card m-2 product-card" style="height: 380px;">
+                        <!-- Product image-->
+                        <div class="image-container">
+                            <img class="card-img-top" routerLink="/childrens/view/{{childrenproduct.id}}"
+                                [src]="childrenproduct.image" alt="..." />
+                            <div class="icon-container">
+                                <i routerLink="/childrens/view/{{childrenproduct.id}}" class="fa fa-heart"></i>
+                                <i routerLink="/childrens/view/{{childrenproduct.id}}" class="fa-solid fa-eye"></i>
+                                <i routerLink="/childrens/view/{{childrenproduct.id}}" class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{childrenproduct.title}}</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                                        <div *ngIf="star <= childrenproduct.rating.rate; else emptyStar"
+                                            class="bi bi-star-fill text-dark"></div>
+                                        <ng-template #emptyStar>
+                                            <div class="bi bi-star text-dark"></div>
+                                        </ng-template>
+                                    </ng-container>
+                                </div>
+                                <!-- <div class="text-center text-black-50">{{childrenproduct.rating.count}} reviews</div> -->
+                                <!-- Product price-->
+                                <!-- <i class="fa-solid fa-indian-rupee-sign"></i> {{childrenproduct.price}} -->
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <a href="" routerLink="/boys-girls">
+                <h5 class="ms-2 btn btn-dark"><b>View All Collection <i class="fa-solid fa-arrow-right"></i></b></h5>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="full-width-section">
+    <div class="container-fluid m-0 p-0">
+        <div class="row g-0 m-5 align-items-center justify-content-center">
+            <div class="col-lg-6 p-5">
+                <h2><b>“Every Step Tells a Story”</b></h2>
+                <p class="fs-6">We create and deliver high-quality and attractive, stylish footwears designed for active
+                    lifestyles. Combining advanced technology with premium materials, our footwear offers exceptional
+                    comfort, durability, and support. The Volant Footwear is Perfect for occasional, athletes and casual
+                    wearers alike, Volant ensures every step you take is a step towards excellence. Explore innovation,
+                    and embrace movement with Volant.</p>
+
+                <button class="btn border border-2 border-dark rounded-0 fs-6">Discover More</button>
+            </div>
+
+
+            <div class="col-lg-6 p-5">
+                <div class="row g-0">
+                    <div
+                        class="col-lg-6 p-3 text-section d-flex align-items-center justify-content-center bg-light text-center">
+                        <div>
+                            <h3 class="fw-bold">SHOES</h3>
+                            <p class="text-black-50 fw-bold"><em>Effortless elegance and all-day comfort</em></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 image-section">
+                        <img src="../../assets/images/compressed-images/jpeg-optimizer_sidebaner-bg-(385x330)-03.jpg"
+                            alt="" class="img-fluid full-cover">
+                    </div>
+                    <div class="col-lg-6 image-section">
+                        <img src="../../assets/images/compressed-images/jpeg-optimizer_sidebaner-gents-(385x330)-02.jpg"
+                            alt="" class="img-fluid full-cover">
+                    </div>
+                    <div
+                        class="col-lg-6 p-3 text-section d-flex align-items-center justify-content-center bg-light text-center">
+                        <div>
+                            <h3 class="fw-bold">SCHOOL EDITION</h3>
+                            <p class="text-black-50 fw-bold"><em>Smart Footwear for every student</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,34 @@
+<!-- <app-header></app-header> -->
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container mt-5">
+        <div class="row border rounded shadow m-5">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="../../assets/images/3d-account-login-password-form_165488-4676.avif" alt="">
+            </div>
+            <div class="col-lg-6 p-2 mt-5">
+                <div style="height: 100%;" class="d-flex flex-column align-items-center">
+                    <h3 class="fw-bold">Welcome User</h3>
+                    <form class="mt-5" [formGroup]="loginform" (ngSubmit)="login()">
+                        <div class="mb-3">
+                            <input type="text" placeholder="email id please" class="form-control" formControlName="email">
+                        </div>
+                        <!-- validation -->
+                        <div *ngIf="loginform.get('email')?.errors && loginform.get('email')?.touched" class="fw-bolder text-danger m-3">enter email id</div>
+                        <div>
+                            <input type="password" placeholder="enter your password" class="form-control" formControlName="password">
+                        </div>
+                        <!-- validation -->
+                        <div *ngIf="loginform.get('password')?.errors && loginform.get('password')?.touched" class="fw-bolder text-danger m-3"> enter valid password</div>
+                        <input type="submit" class="btn btn-dark mt-3 mb-4" value="Login">
+                    </form>
+                    <p>Don't have an Account? click here to <a class="text-dark" routerLink="/user/register">Register</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-dark" routerLink="">Back to home</a>
+
+</div>
+
+<!-- <app-footer></app-footer> -->

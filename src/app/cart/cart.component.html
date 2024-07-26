@@ -1,0 +1,102 @@
+<app-header></app-header>
+<a style="text-decoration: none;" href="https://wa.me/+918590366431" class="whatsapp-icon" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<ng-container *ngIf="product.length !=0">
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-8 cart">
+                        <div class="title">
+                            <div class="row">
+                                <div class="col">
+                                    <h4><b>Shopping Cart</b></h4>
+                                </div>
+                                <div class="col align-self-center text-right text-muted">{{ product.length }} items
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let item of product; let i = index" class="row border-top border-bottom">
+                            <div class="row main align-items-center">
+                                <div class="col-2">
+                                    <img class="img-fluid" [src]="item.image" alt="">
+                                </div>
+                                <div class="col">
+                                    <div class="row text-muted">{{ item.category }}</div>
+                                    <div class="row">{{ item.title }}</div>
+                                </div>
+                                <div class="col">
+                                    <span (click)="decreaseQuantity(item)">-</span>
+                                    <span class="border">{{ item.quantity }}</span>
+                                    <span (click)="increaseQuantity(item)"><button
+                                            class="border-0 bg-white">+</button></span>
+                                </div>
+                                <div class="col">
+                                    Rs. {{ item.total }} <span class="close" (click)="removeItem(item)"><i
+                                            class="fa-solid fa-trash-can text-danger fs-4 text-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="back-to-shop">
+                            <a routerLink="/shop">&leftarrow;</a>
+                            <span class="text-muted">Back to shop</span>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-lg-6"> <button (click)="emptyCart()"
+                                    class="btn btn-danger mx-2 text-nowrap">Empty Cart</button></div>
+                            <div class="col-lg-6"><button routerLink="/" class="btn btn-primary mx-2 text-nowrap">Shop
+                                    More</button></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 summary">
+                        <div>
+                            <h5><b>Summary</b></h5>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col">ITEMS {{ product.length }}</div>
+                            <div class="col text-right">Rs. {{ grandTotal }}</div>
+                        </div>
+                        <form>
+                            <p>SHIPPING</p>
+                            <select>
+                                <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+                            </select>
+                            <p>GIVE CODE</p>
+                            <input id="code" placeholder="Enter your code">
+                        </form>
+                        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                            <div class="col">TOTAL PRICE</div>
+                            <div class="col text-right">Rs. {{ grandTotal + 5 }}</div>
+                        </div>
+                        <button class="btn" (click)="checkout()">CHECKOUT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</ng-container>
+
+
+
+
+<ng-container *ngIf="product.length ==0">
+
+
+    <div class="d-flex justify-content-center mt-5 align-items-center w-100">
+        <img class="img-fluid mt-5" style="" width="300px" src="../../assets/images/322-3224210_your-cart-is-currently-empty-empty-shopping-cart.png" alt="">
+    </div>
+
+    <h2 class="text-center">Your Cart is Empty</h2>
+    <h5 class="text-center text-black-50">Looks Like You have not Added anything to your Cart</h5>
+    <div class="row d-flex align-items-center justify-content-center">
+       <div class="col-lg-3"> <button routerLink="/" class="text-center btn btn-dark">Go Home</button></div>
+    </div>
+
+
+</ng-container>
