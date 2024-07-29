@@ -42,15 +42,13 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(item: any) {
-    const index = this.product.indexOf(item);
-    if (index > -1) {
-      this.product.splice(index, 1);
-    }
+    this.cartService.removeCartItem(item); // Update the service
+    this.product = this.product.filter((i: any) => i.id !== item.id); // Update local array
     this.updateGrandTotal();
   }
 
   emptyCart() {
-    this.cartService.removeAllCart();
+    this.cartService.removeAllCart(); // Update the service
     this.product = [];
     this.grandTotal = 0;
   }

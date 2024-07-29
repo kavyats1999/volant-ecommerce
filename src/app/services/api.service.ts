@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  // SERVER_URL='http://localhost:3000'
   SERVER_URL='https://e-commerce-backend-1-6cal.onrender.com'
+  // SERVER_URL='https://e-commerce-backend-1-6cal.onrender.com'
 
   constructor(private http:HttpClient) { }
 
